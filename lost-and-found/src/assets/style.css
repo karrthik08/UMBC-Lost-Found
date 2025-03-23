@@ -1,0 +1,89 @@
+/* Page Content - Avoid Overlapping with Navbar */
+.content {
+    padding-top: 60px; /* Pushes content down */
+  }
+  
+  /* Ensure all elements align properly */
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+
+
+nav ul {
+    background-color: #333;
+    padding: 10px;
+    list-style: none;
+    text-align: center;
+}
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+/* Home Page Styling */
+.home-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.home-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.home-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.home-button:hover {
+    background-color: #0056b3;
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: #333;  /* Dark background */
+    padding: 10px 0;
+    position: fixed; /* Keep it at the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure it stays above content */
+  }
+  
+  .navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 13px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .navbar ul li {
+    margin: 0 15px;
+  }
+  
+  .navbar ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  
+  .navbar ul li a:hover {
+    color: #ffd700; /* Gold hover effect */
+  }
+  
