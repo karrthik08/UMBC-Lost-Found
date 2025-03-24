@@ -1,0 +1,107 @@
+.found-container .filter-section {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+    padding: 1.5rem;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: var(--shadow-soft);
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+}
+
+.found-container .filter-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(138, 43, 226, 0.2);
+}
+
+.found-container .filter-section h2 {
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.found-container .filter-input {
+    margin-bottom: 1rem;
+}
+
+.found-container .filter-input input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.found-container .filter-input input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(138, 43, 226, 0.2);
+}
+
+.found-container .filter-input input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.found-container .filter-btn,
+.found-container .clear-btn {
+    width: 100%;
+    margin-bottom: 0.8rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.found-container .filter-btn {
+    background: var(--gradient-primary);
+    color: white;
+    padding: 0.75rem 1rem;
+    border: none;
+    width: 100%;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 0.75rem;
+}
+
+.found-container .filter-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(138, 43, 226, 0.4);
+}
+
+.found-container .clear-btn {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    width: 100%;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.found-container .clear-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+@media screen and (max-width: 768px) {
+    .found-container .filter-section {
+        padding: 1.5rem;
+    }
+
+    .found-container .filter-input input {
+        padding: 0.7rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .found-container .filter-section {
+        padding: 1rem;
+    }
+}

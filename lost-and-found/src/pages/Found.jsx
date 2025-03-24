@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import Popup from "../components/Popup";
 import "../assets/lost_found.css";
 import "../assets/post_user.css";
+import "../assets/found.css";
 import { isPriorityPost } from "../utils/priorityClassifier";
 
 const Found = () => {
@@ -19,7 +20,8 @@ const Found = () => {
       try {
         const response = await fetch("http://localhost:8000/api/posts/");
         const data = await response.json();
-        setPosts(data);
+        const foundPosts = data.filter(post => post.report_type?.toLowerCase() === "found");
+        setPosts(foundPosts);
       } catch (error) {
         console.error("Error fetching posts:", error);
       }
@@ -57,12 +59,12 @@ const Found = () => {
   const handleMouseUp = () => setIsPaused(false);
 
   return (
-    <div>
+    <div className="found-container">
       <Navbar />
-      <h1 className="lost-heading">Found</h1>
+      <h1 className="lost-heading">Found Items</h1>
       <div className="content-wrapper">
         <div className="priority-section">
-          <h2 className="priority-title">Priority Found Items</h2>
+          <h2 className="priority-title">Priority Posts</h2>
           <div
             className="carousel-container"
             ref={carouselRef}
@@ -99,7 +101,7 @@ const Found = () => {
               </div>
             ))}
           </div>
-          <h2 className="recent-title">Recently Found</h2>
+          <h2 className="recent-title">Recent Posts</h2>
           <div className="recent-posts-list scrollable">
             {posts.filter((post) => !isPriorityPost(post.description)).slice(0, 5).map((post, index) => (
               <div key={index} className="recent-post-card">
@@ -132,14 +134,30 @@ const Found = () => {
         </div>
 
         <div className="right-sidebar">
-          <div className="filter-section top-right">
-            <h3>Filters:</h3>
-            <label htmlFor="filterTag">
-              <strong>TAG</strong>
-            </label>
-            <input type="text" id="filterTag" placeholder="Enter tag" />
-            <button className="filter-btn">Filter Post</button>
-            <button className="clear-btn">Cancel Filters</button>
+          <div className="filter-section">
+            <h2>Filter Posts</h2>
+            <div className="filter-input">
+              <input
+                type="text"
+                id="filterKeyword"
+                placeholder="Search by keyword..."
+              />
+            </div>
+            <div className="filter-input">
+              <input
+                type="date"
+                id="filterDate"
+              />
+            </div>
+            <div className="filter-input">
+              <input
+                type="text"
+                id="filterLocation"
+                placeholder="Location"
+              />
+            </div>
+            <button className="filter-btn">Apply Filters</button>
+            <button className="clear-btn">Clear Filters</button>
           </div>
 
           <div className="lost-something">

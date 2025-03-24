@@ -19,7 +19,8 @@ const Lost = () => {
       try {
         const response = await fetch("http://localhost:8000/api/posts/");
         const data = await response.json();
-        setPosts(data);
+        const lostPosts = data.filter(post => post.report_type?.toLowerCase() === "lost");
+        setPosts(lostPosts);
       } catch (error) {
         console.error("Error fetching posts:", error);
       }
@@ -57,11 +58,16 @@ const Lost = () => {
   const handleMouseUp = () => setIsPaused(false);
 
   return (
-    <div>
+    <div className="container">
       <Navbar />
-      <h1 className="lost-heading">Lost</h1>
+      {/* Decorative elements */}
+      <div className="decorative-circle circle-1"></div>
+      <div className="decorative-circle circle-2"></div>
+      
+      <h1 className="lost-heading">Lost Items</h1>
+      
       <div className="content-wrapper">
-        <div className="priority-section">
+        <section className="priority-section">
           <h2 className="priority-title">Priority Posts</h2>
           <div
             className="carousel-container"
@@ -99,6 +105,7 @@ const Lost = () => {
               </div>
             ))}
           </div>
+          
           <h2 className="recent-title">Recent Posts</h2>
           <div className="recent-posts-list scrollable">
             {posts.filter((post) => !isPriorityPost(post.description)).slice(0, 5).map((post, index) => (
@@ -129,26 +136,25 @@ const Lost = () => {
               </div>
             ))}
           </div>
-        </div>
-
-        <div className="right-sidebar">
-          <div className="filter-section top-right">
-            <h3>Filters:</h3>
-            <label htmlFor="filterTag">
-              <strong>TAG</strong>
-            </label>
-            <input type="text" id="filterTag" placeholder="Enter tag" />
-            <button className="filter-btn">Filter Post</button>
-            <button className="clear-btn">Cancel Filters</button>
+        </section>
+        
+        <aside className="right-sidebar">
+          <div className="filter-section">
+            <h3>Filter Posts</h3>
+            <input type="text" placeholder="Search by keyword..." />
+            <input type="date" placeholder="Date Lost" />
+            <input type="text" placeholder="Location" />
+            <button className="filter-btn">Apply Filters</button>
+            <button className="clear-btn">Clear Filters</button>
           </div>
-
+          
           <div className="lost-something">
             <h3>Lost Something?</h3>
             <button onClick={() => navigate("/post")} className="post-here-btn">
               Post Here
             </button>
           </div>
-        </div>
+        </aside>
       </div>
 
       {popupData && <Popup post={popupData} onClose={() => setPopupData(null)} />}
